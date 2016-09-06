@@ -18,36 +18,29 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    "name": "Key Performance Indicator",
-    "version": "9.0.1.0.0",
-    "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
-    "website": "http://www.savoirfairelinux.com",
-    "license": "AGPL-3",
-    "category": "Report",
-    "complexity": "normal",
-    "depends": [
-        'mgmtsystem',
-        'base_external_dbsource',
-    ],
-    "data": [
-        'security/ir.model.access.csv',
-        'security/mgmtsystem_kpi_security.xml',
-        'views/mgmtsystem_kpi_category.xml',
-        'views/mgmtsystem_kpi_history.xml',
-        'views/mgmtsystem_kpi_threshold_range.xml',
-        'views/mgmtsystem_kpi_threshold.xml',
-        'views/mgmtsystem_kpi.xml',
-        'views/menu.xml',
-        'data/mgmtsystem_kpi.xml',
-    ],
-    "images": [
-        "images/kpi_definition.png",
-        "images/kpi_computation.png",
-        "images/kpi_threshold.png",
-        "images/kpi_range.png",
-    ],
-    "demo": [],
-    "test": [],
-    'installable': True,
-}
+
+from openerp import fields, models
+
+
+class MgmtsystemKPIHistory(models.Model):
+    """History of the KPI."""
+
+    _name = "mgmtsystem.kpi.history"
+    _description = "History of the KPI"
+    _order = "date desc"
+
+    name = fields.Char('Name', size=150, required=True,
+                       default=fields.Datetime.now(),)
+    kpi_id = fields.Many2one('mgmtsystem.kpi', 'KPI', required=True)
+    date = fields.Datetime(
+        'Execution Date',
+        required=True,
+        readonly=True,
+        default=fields.Datetime.now()
+    )
+    value = fields.Float('Value', required=True, readonly=True)
+    color = fields.Text('Color', required=True,
+                        readonly=True, default='#FFFFFF')
+    company_id = fields.Many2one(
+        'res.company', 'Company',
+        default=lambda self: self.env.user.company_id.id)

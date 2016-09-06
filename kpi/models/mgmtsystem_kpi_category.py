@@ -18,36 +18,15 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    "name": "Key Performance Indicator",
-    "version": "9.0.1.0.0",
-    "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
-    "website": "http://www.savoirfairelinux.com",
-    "license": "AGPL-3",
-    "category": "Report",
-    "complexity": "normal",
-    "depends": [
-        'mgmtsystem',
-        'base_external_dbsource',
-    ],
-    "data": [
-        'security/ir.model.access.csv',
-        'security/mgmtsystem_kpi_security.xml',
-        'views/mgmtsystem_kpi_category.xml',
-        'views/mgmtsystem_kpi_history.xml',
-        'views/mgmtsystem_kpi_threshold_range.xml',
-        'views/mgmtsystem_kpi_threshold.xml',
-        'views/mgmtsystem_kpi.xml',
-        'views/menu.xml',
-        'data/mgmtsystem_kpi.xml',
-    ],
-    "images": [
-        "images/kpi_definition.png",
-        "images/kpi_computation.png",
-        "images/kpi_threshold.png",
-        "images/kpi_range.png",
-    ],
-    "demo": [],
-    "test": [],
-    'installable': True,
-}
+
+
+from openerp import fields, models
+
+
+class MgmtsystemKPICategory(models.Model):
+    """KPI Category."""
+
+    _name = "mgmtsystem.kpi.category"
+    _description = "KPI Category"
+    name = fields.Char('Name', size=50, required=True)
+    description = fields.Text('Description')

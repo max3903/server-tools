@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <!-- KPI -->
-        <record id="view_mgmtsystem_kpi_tree" model="ir.ui.view">
-            <field name="name">mgmtsystem.kpi.tree</field>
-            <field name="model">mgmtsystem.kpi</field>
+        <record id="view_kpi_tree" model="ir.ui.view">
+            <field name="name">kpi.tree</field>
+            <field name="model">kpi</field>
             <field name="arch" type="xml">
                 <tree string="Key Performance Indicators">
                     <field name="name"/>
@@ -16,9 +16,9 @@
             </field>
         </record>
 
-        <record id="view_mgmtsystem_kpi_filter" model="ir.ui.view">
-            <field name="name">mgmtsystem.kpi.filter</field>
-            <field name="model">mgmtsystem.kpi</field>
+        <record id="view_kpi_filter" model="ir.ui.view">
+            <field name="name">kpi.filter</field>
+            <field name="model">kpi</field>
             <field name="arch" type="xml">
                 <search string="KPI">
                     <group>
@@ -37,9 +37,9 @@
             </field>
         </record>
 
-        <record id="view_mgmtsystem_kpi_form" model="ir.ui.view">
-            <field name="name">mgmtsystem.kpi.form</field>
-            <field name="model">mgmtsystem.kpi</field>
+        <record id="view_kpi_form" model="ir.ui.view">
+            <field name="name">kpi.form</field>
+            <field name="model">kpi</field>
             <field name="arch" type="xml">
                 <form string="Key Performance Indicator">
                     <group col="6" colspan="6">
@@ -77,15 +77,15 @@
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="open_mgmtsystem_kpi_list">
+        <record model="ir.actions.act_window" id="open_kpi_list">
             <field name="name">Key Performance Indicators</field>
-            <field name="res_model">mgmtsystem.kpi</field>
+            <field name="res_model">kpi</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_mgmtsystem_kpi_tree"/>
-            <field name="search_view_id" ref="view_mgmtsystem_kpi_filter"/>
+            <field name="view_id" ref="view_kpi_tree"/>
+            <field name="search_view_id" ref="view_kpi_filter"/>
         </record>
 
-        
+
     </data>
 </odoo>

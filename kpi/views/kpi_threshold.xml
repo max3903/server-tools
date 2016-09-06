@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <!-- Thresholds -->
-        <record id="view_mgmtsystem_kpi_threshold_tree" model="ir.ui.view">
-            <field name="name">mgmtsystem.kpi.threshold.tree</field>
-            <field name="model">mgmtsystem.kpi.threshold</field>
+        <record id="view_kpi_threshold_tree" model="ir.ui.view">
+            <field name="name">kpi.threshold.tree</field>
+            <field name="model">kpi.threshold</field>
             <field name="arch" type="xml">
                 <tree string="Thresholds">
                     <field name="name"/>
@@ -14,9 +14,9 @@
             </field>
         </record>
 
-        <record id="view_mgmtsystem_kpi_threshold_form" model="ir.ui.view">
-            <field name="name">mgmtsystem.kpi.threshold.form</field>
-            <field name="model">mgmtsystem.kpi.threshold</field>
+        <record id="view_kpi_threshold_form" model="ir.ui.view">
+            <field name="name">kpi.threshold.form</field>
+            <field name="model">kpi.threshold</field>
             <field name="arch" type="xml">
                 <form string="Threshold">
                     <field name="name"/>
@@ -36,14 +36,14 @@
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="open_mgmtsystem_threshold_list">
+        <record model="ir.actions.act_window" id="open_threshold_list">
             <field name="name">Thresholds</field>
-            <field name="res_model">mgmtsystem.kpi.threshold</field>
+            <field name="res_model">kpi.threshold</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_mgmtsystem_kpi_threshold_tree"/>
+            <field name="view_id" ref="view_kpi_threshold_tree"/>
         </record>
 
-    
+
     </data>
 </odoo>

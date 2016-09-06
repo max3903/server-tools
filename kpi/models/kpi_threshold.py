@@ -22,10 +22,10 @@
 from openerp import fields, models, api, exceptions, _
 
 
-class MgmtsystemKPIThreshold(models.Model):
+class KPIThreshold(models.Model):
     """KPI Threshold."""
 
-    _name = "mgmtsystem.kpi.threshold"
+    _name = "kpi.threshold"
     _description = "KPI Threshold"
 
     @api.multi
@@ -54,8 +54,8 @@ class MgmtsystemKPIThreshold(models.Model):
 
     name = fields.Char('Name', size=50, required=True)
     range_ids = fields.Many2many(
-        'mgmtsystem.kpi.threshold.range',
-        'mgmtsystem_kpi_threshold_range_rel',
+        'kpi.threshold.range',
+        'kpi_threshold_range_rel',
         'threshold_id',
         'range_id',
         'Ranges'
@@ -64,7 +64,7 @@ class MgmtsystemKPIThreshold(models.Model):
                            compute="_compute_is_valid_threshold", default=True)
     invalid_message = fields.Char(string='Message', size=100,
                                   compute="_compute_generate_invalid_message")
-    kpi_ids = fields.One2many('mgmtsystem.kpi', 'threshold_id', 'KPIs')
+    kpi_ids = fields.One2many('kpi', 'threshold_id', 'KPIs')
     company_id = fields.Many2one(
         'res.company', 'Company',
         default=lambda self: self.env.user.company_id.id)
@@ -73,8 +73,8 @@ class MgmtsystemKPIThreshold(models.Model):
     def create(self, data):
         # check if ranges overlap
         # TODO: This code can be done better
-        range_obj1 = self.env['mgmtsystem.kpi.threshold.range']
-        range_obj2 = self.env['mgmtsystem.kpi.threshold.range']
+        range_obj1 = self.env['kpi.threshold.range']
+        range_obj2 = self.env['kpi.threshold.range']
         if data.get('range_ids'):
             for range1 in data['range_ids'][0][2]:
                 range_obj1 = range_obj1.browse(range1)
@@ -87,9 +87,9 @@ class MgmtsystemKPIThreshold(models.Model):
                                 _("2 of your ranges are overlapping!"),
                                 _("Make sure your ranges do not overlap!")
                             )
-                    range_obj2 = self.env['mgmtsystem.kpi.threshold.range']
-                range_obj1 = self.env['mgmtsystem.kpi.threshold.range']
-        return super(MgmtsystemKPIThreshold, self).create(data)
+                    range_obj2 = self.env['kpi.threshold.range']
+                range_obj1 = self.env['kpi.threshold.range']
+        return super(KPIThreshold, self).create(data)
 
     @api.multi
     def get_color(self, kpi_value):

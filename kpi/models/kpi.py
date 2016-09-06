@@ -58,21 +58,21 @@ def is_sql_or_ddl_statement(query):
     return not RE_SELECT_QUERY.match(query.upper())
 
 
-class MgmtsystemKPI(models.Model):
+class KPI(models.Model):
     """Key Performance Indicators."""
 
-    _name = "mgmtsystem.kpi"
+    _name = "kpi"
     _description = "Key Performance Indicator"
 
     name = fields.Char('Name', required=True)
     description = fields.Text('Description')
     category_id = fields.Many2one(
-        'mgmtsystem.kpi.category',
+        'kpi.category',
         'Category',
         required=True,
     )
     threshold_id = fields.Many2one(
-        'mgmtsystem.kpi.threshold',
+        'kpi.threshold',
         'Threshold',
         required=True,
     )
@@ -108,7 +108,7 @@ class MgmtsystemKPI(models.Model):
               "(i.e. 'SELECT 5 AS value')."),
     )
     history_ids = fields.One2many(
-        'mgmtsystem.kpi.history',
+        'kpi.history',
         'kpi_id',
         'History',
     )
@@ -123,7 +123,7 @@ class MgmtsystemKPI(models.Model):
 
     @api.multi
     def _compute_display_last_kpi_value(self):
-        history_obj = self.env['mgmtsystem.kpi.history']
+        history_obj = self.env['kpi.history']
         for obj in self:
             history_ids = history_obj.search([("kpi_id", "=", obj.id)])
             if history_ids:
@@ -156,7 +156,7 @@ class MgmtsystemKPI(models.Model):
                 'value': kpi_value,
                 'color': threshold_obj.get_color(kpi_value),
             }
-            history_obj = self.env['mgmtsystem.kpi.history']
+            history_obj = self.env['kpi.history']
             history_obj.create(values)
             # obj.history_ids = history_obj.search([("kpi_id", "=", obj.id)])
 

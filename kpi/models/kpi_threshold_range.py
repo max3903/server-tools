@@ -52,11 +52,11 @@ def is_sql_or_ddl_statement(query):
     return not RE_SELECT_QUERY.match(query.upper())
 
 
-class MgmtsystemKPIThresholdRange(models.Model):
+class KPIThresholdRange(models.Model):
     """
     KPI Threshold Range
     """
-    _name = "mgmtsystem.kpi.threshold.range"
+    _name = "kpi.threshold.range"
     _description = "KPI Threshold Range"
 
     name = fields.Char('Name', size=50, required=True)
@@ -97,8 +97,8 @@ class MgmtsystemKPIThresholdRange(models.Model):
     )
 
     threshold_ids = fields.Many2many(
-        'mgmtsystem.kpi.threshold',
-        'mgmtsystem_kpi_threshold_range_rel',
+        'kpi.threshold',
+        'kpi_threshold_range_rel',
         'range_id',
         'threshold_id',
         'Thresholds',

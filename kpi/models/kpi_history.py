@@ -22,16 +22,16 @@
 from openerp import fields, models
 
 
-class MgmtsystemKPIHistory(models.Model):
+class KPIHistory(models.Model):
     """History of the KPI."""
 
-    _name = "mgmtsystem.kpi.history"
+    _name = "kpi.history"
     _description = "History of the KPI"
     _order = "date desc"
 
     name = fields.Char('Name', size=150, required=True,
                        default=fields.Datetime.now(),)
-    kpi_id = fields.Many2one('mgmtsystem.kpi', 'KPI', required=True)
+    kpi_id = fields.Many2one('kpi', 'KPI', required=True)
     date = fields.Datetime(
         'Execution Date',
         required=True,

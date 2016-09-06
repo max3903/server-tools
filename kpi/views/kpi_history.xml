@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <!-- KPI history -->
-        <record id="view_mgmtsystem_kpi_history_tree" model="ir.ui.view">
-            <field name="name">mgmtsystem.kpi.history.tree</field>
-            <field name="model">mgmtsystem.kpi.history</field>
+        <record id="view_kpi_history_tree" model="ir.ui.view">
+            <field name="name">kpi.history.tree</field>
+            <field name="model">kpi.history</field>
             <field name="arch" type="xml">
                 <tree string="KPI History">
                     <field name="name"/>

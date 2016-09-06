@@ -5,9 +5,9 @@
 
             <!-- Categories -->
 
-        <record id="view_mgmtsystem_kpi_category_tree" model="ir.ui.view">
-            <field name="name">mgmtsystem.kpi.category.tree</field>
-            <field name="model">mgmtsystem.kpi.category</field>
+        <record id="view_kpi_category_tree" model="ir.ui.view">
+            <field name="name">kpi.category.tree</field>
+            <field name="model">kpi.category</field>
             <field name="arch" type="xml">
                 <tree string="Categories">
                     <field name="name"/>
@@ -15,9 +15,9 @@
             </field>
         </record>
 
-        <record id="view_mgmtsystem_kpi_category_form" model="ir.ui.view">
-            <field name="name">mgmtsystem.kpi.category.form</field>
-            <field name="model">mgmtsystem.kpi.category</field>
+        <record id="view_kpi_category_form" model="ir.ui.view">
+            <field name="name">kpi.category.form</field>
+            <field name="model">kpi.category</field>
             <field name="arch" type="xml">
                 <form string="Category">
                     <field name="name"/>
@@ -27,14 +27,14 @@
             </field>
         </record>
 
-        <record model="ir.actions.act_window" id="open_mgmtsystem_category_list">
+        <record model="ir.actions.act_window" id="open_category_list">
             <field name="name">Categories</field>
-            <field name="res_model">mgmtsystem.kpi.category</field>
+            <field name="res_model">kpi.category</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_mgmtsystem_kpi_category_tree"/>
+            <field name="view_id" ref="view_kpi_category_tree"/>
         </record>
-        
+
 
     </data>
 </odoo>

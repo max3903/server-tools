@@ -27,7 +27,6 @@
     "category": "Report",
     "complexity": "normal",
     "depends": [
-        'hr',
         'base_external_dbsource',
     ],
     "data": [
